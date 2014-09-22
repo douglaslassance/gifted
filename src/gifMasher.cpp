@@ -1,6 +1,7 @@
 #include "gifMasher.h"
 
 void gifMasher::setup(){
+    ofSetFrameRate(30);
     
     // Listing our input devices.
     soundStream.listDevices();
@@ -29,12 +30,12 @@ void gifMasher::stop() {
     soundStream.stop();
 }
 
-void gifMasher::update(){
+void gifMasher::update() {
+    beatDetect.updateFFT();
 }
 
 void gifMasher::draw(){
-    std::cout << beatDetect.isKick();
-    if (beatDetect.isKick() == true) {
+    if (beatDetect.isSnare() == true) {
         ofBackground(255, 255, 255);
     } else {
         ofBackground(0, 0, 0);

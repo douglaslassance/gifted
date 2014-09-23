@@ -1,9 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include "ofMain.h"
+#include "gifMasher.h"
 #include "beatDetect.h"
-
+#include "MediaPlayer.h"
 class gifMasher : public ofBaseApp {
 
 	public:
@@ -25,4 +25,5 @@ class gifMasher : public ofBaseApp {
     
         ofSoundStream soundStream;
         beatDetect beatDetect;
+        MediaPlayer *mediaPlayer;
 };

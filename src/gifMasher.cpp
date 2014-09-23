@@ -1,13 +1,14 @@
 #include "gifMasher.h"
 
 void gifMasher::setup(){
+    mediaPlayer = new MediaPlayer();
     ofSetFrameRate(30);
     
     // Listing our input devices.
     soundStream.listDevices();
     
     // Setting the input device.
-    soundStream.setDeviceID(5);
+    soundStream.setDeviceID(3);
     
     int bufferSize = 256;
     
@@ -32,16 +33,27 @@ void gifMasher::stop() {
 
 void gifMasher::update() {
     beatDetect.updateFFT();
+    mediaPlayer->update();
+    if (beatDetect.isSnare() == true) {
+        mediaPlayer->newImage();
+    }
 }
 
 void gifMasher::draw(){
+
+    mediaPlayer->draw();
     if (beatDetect.isSnare() == true) {
-        ofBackground(255, 255, 255);
-    } else {
-        ofBackground(0, 0, 0);
+        ofDrawBitmapStringHighlight("SNARE",20,20);
+    }
+    if (beatDetect.isHat() == true){
+        ofDrawBitmapStringHighlight("HAT",20,40);
+    }
+    if (beatDetect.isKick() == true){
+        ofDrawBitmapStringHighlight("KICK",20,60);
     }
 }
 
 void gifMasher::audioIn(float * input, int bufferSize, int nChannels) {
     beatDetect.audioReceived(input, bufferSize);
+
 }

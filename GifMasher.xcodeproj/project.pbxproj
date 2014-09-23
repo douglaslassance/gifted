@@ -10,6 +10,10 @@
 		A5ED533519D00FCD005F777D /* beatDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5ED533119D00FCD005F777D /* beatDetect.cpp */; };
 		A5ED533619D00FCD005F777D /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5ED533319D00FCD005F777D /* fft.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */; };
+		C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */; };
+		C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */; };
+		C9C3B89219D12018004668B8 /* ofxGifFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88E19D12018004668B8 /* ofxGifFrame.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -67,12 +71,14 @@
 		A5ED533319D00FCD005F777D /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
 		A5ED533419D00FCD005F777D /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		C9529A6419CF96D700439EF8 /* ofxGifDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifDecoder.cpp; sourceTree = "<group>"; };
-		C9529A6519CF96D700439EF8 /* ofxGifDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifDecoder.h; sourceTree = "<group>"; };
-		C9529A6619CF96D700439EF8 /* ofxGifFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifFile.cpp; sourceTree = "<group>"; };
-		C9529A6719CF96D700439EF8 /* ofxGifFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifFile.h; sourceTree = "<group>"; };
-		C9529A6819CF96D700439EF8 /* ofxGifFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifFrame.cpp; sourceTree = "<group>"; };
-		C9529A6919CF96D700439EF8 /* ofxGifFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifFrame.h; sourceTree = "<group>"; };
+		C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaPlayer.cpp; sourceTree = "<group>"; };
+		C9529A7419D115ED00439EF8 /* MediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPlayer.h; sourceTree = "<group>"; };
+		C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifDecoder.cpp; sourceTree = "<group>"; };
+		C9C3B88B19D12018004668B8 /* ofxGifDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifDecoder.h; sourceTree = "<group>"; };
+		C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifFile.cpp; sourceTree = "<group>"; };
+		C9C3B88D19D12018004668B8 /* ofxGifFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifFile.h; sourceTree = "<group>"; };
+		C9C3B88E19D12018004668B8 /* ofxGifFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifFrame.cpp; sourceTree = "<group>"; };
+		C9C3B88F19D12018004668B8 /* ofxGifFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGifFrame.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -126,7 +132,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				C9529A6D19CF96EB00439EF8 /* ofxGifDecoder */,
+				C9C3B88919D12018004668B8 /* src */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -160,26 +166,18 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
-		C9529A6319CF96D700439EF8 /* src */ = {
+		C9C3B88919D12018004668B8 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C9529A6419CF96D700439EF8 /* ofxGifDecoder.cpp */,
-				C9529A6519CF96D700439EF8 /* ofxGifDecoder.h */,
-				C9529A6619CF96D700439EF8 /* ofxGifFile.cpp */,
-				C9529A6719CF96D700439EF8 /* ofxGifFile.h */,
-				C9529A6819CF96D700439EF8 /* ofxGifFrame.cpp */,
-				C9529A6919CF96D700439EF8 /* ofxGifFrame.h */,
+				C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */,
+				C9C3B88B19D12018004668B8 /* ofxGifDecoder.h */,
+				C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */,
+				C9C3B88D19D12018004668B8 /* ofxGifFile.h */,
+				C9C3B88E19D12018004668B8 /* ofxGifFrame.cpp */,
+				C9C3B88F19D12018004668B8 /* ofxGifFrame.h */,
 			);
 			name = src;
 			path = ../../../addons/ofxGifDecoder/src;
-			sourceTree = "<group>";
-		};
-		C9529A6D19CF96EB00439EF8 /* ofxGifDecoder */ = {
-			isa = PBXGroup;
-			children = (
-				C9529A6319CF96D700439EF8 /* src */,
-			);
-			name = ofxGifDecoder;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -215,6 +213,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */,
+				C9529A7419D115ED00439EF8 /* MediaPlayer.h */,
 				A5ED533119D00FCD005F777D /* beatDetect.cpp */,
 				A5ED533219D00FCD005F777D /* beatDetect.h */,
 				A5ED533319D00FCD005F777D /* fft.cpp */,
@@ -324,8 +324,12 @@
 			files = (
 				A5ED533519D00FCD005F777D /* beatDetect.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */,
 				A5ED533619D00FCD005F777D /* fft.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* gifMasher.cpp in Sources */,
+				C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */,
+				C9C3B89219D12018004668B8 /* ofxGifFrame.cpp in Sources */,
+				C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

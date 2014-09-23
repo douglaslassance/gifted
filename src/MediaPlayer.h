@@ -11,13 +11,14 @@
 #include "ofxGifDecoder.h"
 #include "ofxGifFile.h"
 
-
 #ifndef _MediaPlayer
 #define _MediaPlayer
 
 class MediaPlayer{
     
 public:
+    void loadGifs(string path);
+    void loadGif(string name);
     void update();
     void draw();
     void newImage();
@@ -40,7 +41,6 @@ public:
     vector<ofxGifFile> images;
     ofxGifDecoder decoder;
     ofxGifFile currentImage;
- 
     MediaPlayer();
     
 };

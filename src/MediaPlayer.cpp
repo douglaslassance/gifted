@@ -7,29 +7,40 @@
 //
 
 #include "MediaPlayer.h"
-
 MediaPlayer::MediaPlayer()
 {
-    currentImageIndex = 0;
     std::cout << "Starting Instance of Media Player";
+    currentImageIndex = 0;
+    imageFrame = 1;
+    // if false, will attempt to preserve aspect ratio a bit
+    stretch = true;
+    loadGifs("");
+
+    
+};
+
+
+void MediaPlayer::loadGifs(string path){
+    
     // only allow gifs, search through local data folder
-    ofDirectory dir("");
+    ofDirectory dir(path);
     dir.allowExt("gif");
     dir.listDir();
     // looping through directory adding gifs. do this on another thread.
     for(int i = 0; i < dir.numFiles(); i++){
-        cout << " found a gif : "<<dir.getPath(i) << "\n";
-        this->decoder.decode(dir.getPath(i));
-        images.push_back(this->decoder.getFile());
+        string gif =dir.getPath(i);
+        cout << " found a gif : "<<gif << "\n";
+        loadGif(gif);
     }
     maxImages = images.size()-1;
-    imageFrame = 1;
     newImage();
-    updateBounds();
-    // if false, will attempt to preserve aspect ratio a bit
-    stretch = true;
-};
 
+}
+void MediaPlayer::loadGif(string name){
+            this->decoder.decode(name);
+            images.push_back(this->decoder.getFile());
+            return;
+}
 void MediaPlayer::newImage(){
     // picks a new image of gifs from the array
     
@@ -41,7 +52,7 @@ void MediaPlayer::newImage(){
     }
     currentImage = images[currentImageIndex];
     imageFrame = 0;
-    maxImageFrame = currentImage.getNumFrames();
+    maxImageFrame = currentImage.getNumFrames()-1;
     newFrame();
 }
 
@@ -84,24 +95,28 @@ void MediaPlayer::update(){
     // handles calculating the stretch values for the gif to be drawn
     // and the dimension of the bound frame in which it will draw into
     // by default thi bound frame is the of window
-    updateBounds();
-    calculateDimensions();
-    timedelta = ofGetLastFrameTime();
-    frameClock+=timedelta;
+    if (images.size() > 0){
+        updateBounds();
+        calculateDimensions();
+        timedelta = ofGetLastFrameTime();
+        frameClock+=timedelta;
     
-    // use these prints to debug various parts of the code
-    //cout<< "clock = "<<frameClock << "\n";
-    //cout<< "duration = "<< frameDuration << "\n";
-    //cout << "imageSize = " << currentImage.getWidth() << " X "<< currentImage.getHeight() << "\n";
-    //cout << "boundSize = " << boundWidth << " x " << boundHeight << "\n";
-    if (frameExpired() == true){
-        newFrame();
-    }
-    if (imageFrame > maxImageFrame){
-        newImage();
+        // use these prints to debug various parts of the code
+        //cout<< "clock = "<<frameClock << "\n";
+        //cout<< "duration = "<< frameDuration << "\n";
+        //cout << "imageSize = " << currentImage.getWidth() << " X "<< currentImage.getHeight() << "\n";
+        //cout << "boundSize = " << boundWidth << " x " << boundHeight << "\n";
+        if (frameExpired() == true){
+            newFrame();
+        }
+        if (imageFrame > maxImageFrame){
+            newImage();
+        }
     }
 }
 
 void MediaPlayer::draw(){
-    currentImage.drawFrame(imageFrame,0,0,frameWidth,frameHeight);
+    if (images.size() > 0){
+        currentImage.drawFrame(imageFrame,0,0,frameWidth,frameHeight);
+    }
 }

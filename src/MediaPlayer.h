@@ -7,7 +7,7 @@
 //
 
 
-#include "gifMasher.h"
+#include "Application.h"
 #include "ofxGifDecoder.h"
 #include "ofxGifFile.h"
 

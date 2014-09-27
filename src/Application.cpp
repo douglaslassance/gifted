@@ -27,7 +27,6 @@ void Application::update() {
     
     // I wonder if this should be either in MediaPlayer of BeatDetector.
     if (beatDetector->isSnare() == true) {
-        mediaPlayer->newImage();
     }
 }
 
@@ -38,4 +37,7 @@ void Application::draw(){
 
 void Application::audioIn(float * input, int bufferSize, int nChannels) {
     beatDetector->audioIn(input, bufferSize, nChannels);
+}
+void Application::dragEvent(ofDragInfo dragInfo){
+    mediaPlayer->dropped(dragInfo);
 }

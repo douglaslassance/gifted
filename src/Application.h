@@ -11,6 +11,7 @@ class Application : public ofBaseApp {
         void update();
         void stop();
 		void audioIn(float * input, int bufferSize, int nChannels);
+        void dragEvent(ofDragInfo dragInfo);
 
         ofSoundStream soundStream;
     

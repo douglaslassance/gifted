@@ -6,10 +6,7 @@
 //
 //
 
-
 #include "Application.h"
-#include "ofxGifDecoder.h"
-#include "ofxGifFile.h"
 
 #ifndef _MediaPlayer
 #define _MediaPlayer
@@ -19,29 +16,33 @@ class MediaPlayer{
 public:
     void loadGifs(string path);
     void loadGif(string name);
+    void loadFromQue(int index);
     void update();
     void draw();
-    void newImage();
-    void newFrame();
     void calculateDimensions();
     void updateBounds();
-    Boolean frameExpired();
+    void switchMedia();
+    void resetQue();
+    void flushQue();
+    void quefinished();
+    void dropped(ofDragInfo dragInfo);
     Boolean stretch;
-    int maxImages;
-    int currentImageIndex;
+    int mediaIndex;
     float timedelta;
-    int imageFrame;
-    float frameDuration;
-    int maxImageFrame;
-    float frameClock;
+    float frameOffsetX;
+    float frameOffsetY;
     float frameHeight;
     float frameWidth;
     float boundWidth;
     float boundHeight;
-    vector<ofxGifFile> images;
-    ofxGifDecoder decoder;
-    ofxGifFile currentImage;
+    Boolean queing;
+    int queIndex;
+    string queFileName;
+    vector<string> que;
+    vector<ofVideoPlayer *> media;
+    ofVideoPlayer player;
     MediaPlayer();
+    
     
 };
 

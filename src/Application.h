@@ -12,6 +12,9 @@ class Application : public ofBaseApp {
         void stop();
 		void audioIn(float * input, int bufferSize, int nChannels);
         void dragEvent(ofDragInfo dragInfo);
+		void keyPressed(int key);
+        void mousePressed(int x, int y, int button);
+        void mouseReleased(int x, int y, int button);
 
         ofSoundStream soundStream;
     

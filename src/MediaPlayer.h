@@ -26,6 +26,11 @@ public:
     void flushQue();
     void quefinished();
     void dropped(ofDragInfo dragInfo);
+    void keyPressed(int key);
+    void mouseMoved(int x, int y);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+
     Boolean stretch;
     int mediaIndex;
     float timedelta;

@@ -142,7 +142,19 @@ void MediaPlayer::draw(){
             ofDrawBitmapStringHighlight("index: "+ ofToString(mediaIndex+1)+" / "+ofToString(media.size()), 10,60);
 
         }else{
-            ofDrawBitmapStringHighlight("no gifs loaded", boundWidth/2-100,boundHeight/2);
+            ofDrawBitmapStringHighlight("NO GIFS LOADED", boundWidth/2-100,boundHeight/2);
+            ofDrawBitmapStringHighlight("drag and drop files, or a folder", boundWidth/2-170,boundHeight/2+40);
+
         }
     }
+}
+
+void MediaPlayer::keyPressed(int key){
+    
+}
+void MediaPlayer::mousePressed(int x, int y, int button){
+    
+}
+void MediaPlayer::mouseReleased(int x, int y, int button){
+    
 }

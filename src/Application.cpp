@@ -41,3 +41,12 @@ void Application::audioIn(float * input, int bufferSize, int nChannels) {
 void Application::dragEvent(ofDragInfo dragInfo){
     mediaPlayer->dropped(dragInfo);
 }
+void Application::keyPressed(int key){
+    mediaPlayer->keyPressed(key);
+}
+void Application::mousePressed(int x, int y, int button){
+    mediaPlayer->mousePressed(x,y,button);
+}
+void Application::mouseReleased(int x, int y, int button){
+    mediaPlayer->mouseReleased(x,y,button);
+}

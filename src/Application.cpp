@@ -2,6 +2,7 @@
 
 void Application::setup() {
     
+    ofSetFrameRate(60);
     // Listing our input devices.
     soundStream.listDevices();
     
@@ -43,6 +44,9 @@ void Application::dragEvent(ofDragInfo dragInfo){
 }
 void Application::keyPressed(int key){
     mediaPlayer->keyPressed(key);
+}
+void Application::keyReleased(int key){
+    mediaPlayer->keyReleased(key);
 }
 void Application::mousePressed(int x, int y, int button){
     mediaPlayer->mousePressed(x,y,button);

@@ -7,6 +7,8 @@
 //
 
 #include "Application.h"
+#include "MediaGroup.h"
+# define OF_KEY_SHIFT 0x0400
 
 #ifndef _MediaPlayer
 #define _MediaPlayer
@@ -14,25 +16,35 @@
 class MediaPlayer{
     
 public:
-    void loadGifs(string path);
+    void loadGifs(string path,MediaGroup* group);
+    void loadSingleGif(string path,MediaGroup* group);
     void loadGif(string name);
     void loadFromQue(int index);
     void update();
     void draw();
     void calculateDimensions();
     void updateBounds();
-    void switchMedia();
+    void switchMedia(int amt);
     void resetQue();
     void flushQue();
     void quefinished();
     void dropped(ofDragInfo dragInfo);
     void keyPressed(int key);
+    void keyReleased(int key);
+    void resetMedia();
     void mouseMoved(int x, int y);
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
-
+    void makeGroup(string name);
+    void manageLooping();
+    void changeMediaForwards();
+    void changeMediaBackwards();
+    MediaGroup findGroup(string name);
+    
     Boolean stretch;
     int mediaIndex;
+    int loopingIndex;
+    int lastLoopingIndex;
     float timedelta;
     float frameOffsetX;
     float frameOffsetY;
@@ -41,10 +53,13 @@ public:
     float boundWidth;
     float boundHeight;
     Boolean queing;
+    Boolean addingToGroup;
+    Boolean drawUI;
     int queIndex;
+    int groupIndex;
     string queFileName;
+    vector<MediaGroup *> groups;
     vector<string> que;
-    vector<ofVideoPlayer *> media;
     ofVideoPlayer player;
     MediaPlayer();
     

@@ -1,33 +1,118 @@
+#include <iostream>
+#include <string>
 #include "BeatDetector.h"
+#include "ofxBeat.h"
 
 BeatDetector::BeatDetector() {
-    bd.enableBeatDetect();
+    kickActive = true;
+    snareActive = true;
+    hatActive = true;
+    isKicking = false;
+    isSnaring = false;
+    isHatting = false;
+    detector.enableBeatDetect();
 }
 
 void BeatDetector::stop() {
-    bd.disableBeatDetect();
+    detector.disableBeatDetect();
+}
+
+bool BeatDetector::isKick() {
+    float _kick = detector.kick();
+    
+    if (_kick < 0.05) {
+        isKicking = false;
+    }
+    
+    if (!isKicking and _kick > 0.35 and kickActive) {
+        isKicking = true;
+        return true;
+    }
+    
+    return false;
 }
 
 bool BeatDetector::isSnare() {
-    return bd.isSnare();
+    float _snare = detector.snare();
+    
+    if (_snare < 0.05) {
+        isSnaring = false;
+    }
+    
+    if (!isSnaring and _snare > 0.35 and snareActive) {
+        isSnaring = true;
+        return true;
+    }
+    
+    return false;
+}
+
+bool BeatDetector::isHat() {
+    float _hat = detector.hihat();
+    
+    if (_hat < 0.05) {
+        isHatting = false;
+    }
+    
+    if (!isHatting and _hat > 0.3 and hatActive) {
+        isHatting = true;
+        return true;
+    }
+    
+    return false;
 }
 
 void BeatDetector::update() {
-    bd.updateFFT();
+    detector.update(ofGetElapsedTimeMillis());
 }
 
 void BeatDetector::draw() {
-    if (bd.isSnare() == true) {
-        ofDrawBitmapStringHighlight("SNARE",20,20);
+    
+//    std::stringstream _kick;
+//    _kick << detector.kick();
+//    std::string __kick = _kick.str();
+//    
+//    std::stringstream _snare;
+//    _snare << detector.snare();
+//    std::string __snare = _snare.str();
+//
+//    std::stringstream _hihat;
+//    _hihat << detector.hihat();
+//    std::string __hihat = _hihat.str();
+    
+    if (kickActive) {
+        ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 120);
+        if (isKicking) {
+            ofDrawBitmapStringHighlight("TICK", 200, 120);
+        }
+    } else {
+        ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 120);
     }
-    if (bd.isHat() == true){
-        ofDrawBitmapStringHighlight("HAT",20,40);
-    }
-    if (bd.isKick() == true){
-        ofDrawBitmapStringHighlight("KICK",20,60);
+    
+    if (snareActive) {
+        ofDrawBitmapStringHighlight("Snare Detection: ON",10,140);
+        if (isSnaring) {
+            ofDrawBitmapStringHighlight("TICK", 200, 140);
+        }
+    } else {
+        ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 140);
     }
 }
 
 void BeatDetector::audioIn(float * input, int bufferSize, int nChannels) {
-    //bd.audioReceived(input, bufferSize);
+    detector.audioReceived(input, bufferSize, nChannels);
 }
+
+void BeatDetector::keyPressed(int key){
+    cout << "key: "<<key<<"\n";
+    if (key == 107) {
+        kickActive = !kickActive;
+    }
+    if (key == 115) {
+        snareActive = !snareActive;
+    }
+ }
+
+void BeatDetector::keyReleased(int key){
+}
+

@@ -116,7 +116,8 @@ void MediaPlayer::resetMedia(){
 
 }
 void MediaPlayer::switchMedia(int amt){
-        calculateDimensions();
+    calculateDimensions();
+    if (groups.size()) {
         groups[groupIndex]->media[mediaIndex]->stop();
         groups[groupIndex]->media[mediaIndex]->setPosition(0.0);
         mediaIndex +=amt;
@@ -128,6 +129,7 @@ void MediaPlayer::switchMedia(int amt){
         }
         groups[groupIndex]->media[mediaIndex]->play();
         groups[groupIndex]->media[mediaIndex]->update();
+    }
 
 }
 void MediaPlayer::calculateDimensions(){

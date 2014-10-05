@@ -2,7 +2,7 @@
 
 void Application::setup() {
     
-    ofSetFrameRate(60);
+    ofSetFrameRate(30);
     // Listing our input devices.
     soundStream.listDevices();
     
@@ -10,8 +10,7 @@ void Application::setup() {
     soundStream.setDeviceID(5);
     
     // Starting the stream.
-    soundStream.setup(this, 0, 2, 44100, 256, 4);
-    soundStream.start();
+    soundStream.setup(this, 0, 2, 44100, 1024, 4);
     
     mediaPlayer = new MediaPlayer();
     beatDetector = new BeatDetector();
@@ -26,8 +25,8 @@ void Application::update() {
     beatDetector->update();
     mediaPlayer->update();
     
-    // I wonder if this should be either in MediaPlayer of BeatDetector.
-    if (beatDetector->isSnare() == true) {
+    if (beatDetector->isKick() or beatDetector->isSnare()) {
+        mediaPlayer->switchMedia(1);
     }
 }
 
@@ -36,7 +35,7 @@ void Application::draw(){
     beatDetector->draw();
 }
 
-void Application::audioIn(float * input, int bufferSize, int nChannels) {
+void Application::audioIn(float* input, int bufferSize, int nChannels) {
     beatDetector->audioIn(input, bufferSize, nChannels);
 }
 void Application::dragEvent(ofDragInfo dragInfo){
@@ -44,9 +43,11 @@ void Application::dragEvent(ofDragInfo dragInfo){
 }
 void Application::keyPressed(int key){
     mediaPlayer->keyPressed(key);
+    beatDetector->keyPressed(key);
 }
 void Application::keyReleased(int key){
     mediaPlayer->keyReleased(key);
+    beatDetector->keyReleased(key);
 }
 void Application::mousePressed(int x, int y, int button){
     mediaPlayer->mousePressed(x,y,button);

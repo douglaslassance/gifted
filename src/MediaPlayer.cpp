@@ -43,6 +43,7 @@ void MediaPlayer::loadSingleGif(string path, MediaGroup* group){
 void MediaPlayer::loadGif(string name){
         ofVideoPlayer *movie;
         movie = new ofVideoPlayer();
+    
         movie->loadMovie(name);
         groups[groupIndex]->media.push_back(movie);
 

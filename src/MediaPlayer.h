@@ -39,6 +39,8 @@ public:
     void manageLooping();
     void changeMediaForwards();
     void changeMediaBackwards();
+    void shuffleMedia();
+    void shuffleFrame();
     MediaGroup findGroup(string name);
     
     string stretchMode;

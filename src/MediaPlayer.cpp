@@ -85,7 +85,7 @@ void MediaPlayer::manageLooping(){
         if (loopingIndex > 3){
             loopingIndex = 1;
         }
-        if (loopingIndex <0){
+        if (loopingIndex <=0){
             loopingIndex =3;
         }
         
@@ -108,10 +108,18 @@ void MediaPlayer::manageLooping(){
     }
 
 }
+void MediaPlayer::shuffleMedia(){
+    std::random_shuffle(groups[groupIndex]->media.begin(), groups[groupIndex]->media.end());
+}
+
+void MediaPlayer::shuffleFrame(){
+    groups[groupIndex]->media[mediaIndex]->setPosition(ofRandom(0,1));
+}
 void MediaPlayer::resetMedia(){
     groups[groupIndex]->media[mediaIndex]->stop();
     groups[groupIndex]->media[mediaIndex]->setPosition(0.0);
     mediaIndex = 0;
+    shuffleMedia();
     groups[groupIndex]->media[mediaIndex]->play();
     groups[groupIndex]->media[mediaIndex]->update();
 
@@ -124,10 +132,13 @@ void MediaPlayer::switchMedia(int amt){
         mediaIndex +=amt;
         if (mediaIndex > groups[groupIndex]->media.size()-1){
             mediaIndex = 0;
+            shuffleMedia();
         }
         if (mediaIndex < 0){
             mediaIndex =groups[groupIndex]->media.size()-1;
+            shuffleMedia();
         }
+        shuffleFrame();
         groups[groupIndex]->media[mediaIndex]->play();
         groups[groupIndex]->media[mediaIndex]->update();
     }
@@ -188,12 +199,13 @@ void MediaPlayer::update(){
             if (groups[groupIndex]->media.size() >= mediaIndex+1){
                 manageLooping();
                 timedelta = ofGetLastFrameTime();
-                groups[groupIndex]->media[mediaIndex]->update();
                 if (loopingIndex == 1){
-                    if (groups[groupIndex]->media[mediaIndex]->getIsMovieDone()){
+                    if (groups[groupIndex]->media[mediaIndex]->getPosition() > .96){
+                        cout << "media done";
                         switchMedia(1);
                     }
                 }
+                groups[groupIndex]->media[mediaIndex]->update();
             }
         }
     }

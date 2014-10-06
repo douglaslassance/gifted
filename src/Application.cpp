@@ -7,7 +7,7 @@ void Application::setup() {
     soundStream.listDevices();
     
     // Setting the input device.
-    soundStream.setDeviceID(5);
+    soundStream.setDeviceID(3);
     
     // Starting the stream.
     soundStream.setup(this, 0, 2, 44100, 1024, 4);

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		A52FA97D19D18A9100141546 /*  BeatDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A52FA97B19D18A9100141546 /*  BeatDetector.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		C90CDA5319D7491F00BB3A76 /* beatDetect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA4B19D7491F00BB3A76 /* beatDetect.cpp */; };
-		C90CDA5419D7491F00BB3A76 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA4D19D7491F00BB3A76 /* fft.cpp */; };
 		C90CDA5A19D8A9F300BB3A76 /* MediaGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */; };
+		C90CDA6119E209FC00BB3A76 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5D19E209FC00BB3A76 /* fft.cpp */; };
+		C90CDA6219E209FC00BB3A76 /* ofxBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5F19E209FC00BB3A76 /* ofxBeat.cpp */; };
 		C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */; };
 		C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */; };
 		C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */; };
@@ -71,12 +71,12 @@
 		A52FA97C19D18A9100141546 /* BeatDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeatDetector.h; sourceTree = "<group>"; };
 		A5B86D3919D01C5A0048FDF8 /* GifMasherDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifMasherDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		C90CDA4B19D7491F00BB3A76 /* beatDetect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = beatDetect.cpp; sourceTree = "<group>"; };
-		C90CDA4C19D7491F00BB3A76 /* beatDetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beatDetect.h; sourceTree = "<group>"; };
-		C90CDA4D19D7491F00BB3A76 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
-		C90CDA4E19D7491F00BB3A76 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
 		C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaGroup.cpp; sourceTree = "<group>"; };
 		C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaGroup.h; sourceTree = "<group>"; };
+		C90CDA5D19E209FC00BB3A76 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fft.cpp; path = ../../../addons/ofxBeat/fft.cpp; sourceTree = "<group>"; };
+		C90CDA5E19E209FC00BB3A76 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fft.h; path = ../../../addons/ofxBeat/fft.h; sourceTree = "<group>"; };
+		C90CDA5F19E209FC00BB3A76 /* ofxBeat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxBeat.cpp; path = ../../../addons/ofxBeat/ofxBeat.cpp; sourceTree = "<group>"; };
+		C90CDA6019E209FC00BB3A76 /* ofxBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxBeat.h; path = ../../../addons/ofxBeat/ofxBeat.h; sourceTree = "<group>"; };
 		C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaPlayer.cpp; sourceTree = "<group>"; };
 		C9529A7419D115ED00439EF8 /* MediaPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPlayer.h; sourceTree = "<group>"; };
 		C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGifDecoder.cpp; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				C90CDA4A19D7491F00BB3A76 /* ofxBeatTracking */,
+				C90CDA6319E20A0100BB3A76 /* ofxBeat */,
 				A52FA9A519D18C0B00141546 /* ofxGifDecoder */,
 			);
 			name = addons;
@@ -181,16 +181,15 @@
 			name = "3rd party frameworks";
 			sourceTree = "<group>";
 		};
-		C90CDA4A19D7491F00BB3A76 /* ofxBeatTracking */ = {
+		C90CDA6319E20A0100BB3A76 /* ofxBeat */ = {
 			isa = PBXGroup;
 			children = (
-				C90CDA4B19D7491F00BB3A76 /* beatDetect.cpp */,
-				C90CDA4C19D7491F00BB3A76 /* beatDetect.h */,
-				C90CDA4D19D7491F00BB3A76 /* fft.cpp */,
-				C90CDA4E19D7491F00BB3A76 /* fft.h */,
+				C90CDA5D19E209FC00BB3A76 /* fft.cpp */,
+				C90CDA5E19E209FC00BB3A76 /* fft.h */,
+				C90CDA5F19E209FC00BB3A76 /* ofxBeat.cpp */,
+				C90CDA6019E209FC00BB3A76 /* ofxBeat.h */,
 			);
-			name = ofxBeatTracking;
-			path = ../../../addons/ofxBeatTracking;
+			name = ofxBeat;
 			sourceTree = "<group>";
 		};
 		C9C3B88919D12018004668B8 /* src */ = {
@@ -350,12 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				C90CDA6219E209FC00BB3A76 /* ofxBeat.cpp in Sources */,
 				A52FA97D19D18A9100141546 /*  BeatDetector.cpp in Sources */,
 				C90CDA5A19D8A9F300BB3A76 /* MediaGroup.cpp in Sources */,
 				C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */,
-				C90CDA5419D7491F00BB3A76 /* fft.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* Application.cpp in Sources */,
-				C90CDA5319D7491F00BB3A76 /* beatDetect.cpp in Sources */,
+				C90CDA6119E209FC00BB3A76 /* fft.cpp in Sources */,
 				C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */,
 				C9C3B89219D12018004668B8 /* ofxGifFrame.cpp in Sources */,
 				C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */,
@@ -519,7 +518,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -608,7 +609,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

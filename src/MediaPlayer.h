@@ -41,8 +41,9 @@ public:
     void changeMediaBackwards();
     MediaGroup findGroup(string name);
     
-    Boolean stretch;
+    string stretchMode;
     int mediaIndex;
+    int stretchIndex;
     int loopingIndex;
     int lastLoopingIndex;
     float timedelta;

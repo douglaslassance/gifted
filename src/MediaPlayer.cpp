@@ -12,12 +12,12 @@ MediaPlayer::MediaPlayer()
     std::cout << "Starting Instance of Media Player";
     mediaIndex = 0;
     // if false, will attempt to preserve aspect ratio a bit
-    stretch = true;
     frameOffsetX = 0.0;
     frameOffsetY = 0.0;
     addingToGroup = false;
     flushQue();
     loopingIndex = 2;
+    stretchIndex = 0;
     drawUI = true;
     groups.reserve(100);
 };
@@ -135,10 +135,16 @@ void MediaPlayer::switchMedia(int amt){
 }
 void MediaPlayer::calculateDimensions(){
 
-    if (stretch == true){
+    
+    if (stretchIndex == 0){
+        // traditional stretching
         frameWidth = boundWidth;
         frameHeight = boundHeight;
-    }else{
+        stretchMode = "stretch";
+        frameOffsetX = 0;
+        frameOffsetY = 0;
+    }else if (stretchIndex == 1){
+        // stretching accounting for the aspect ratio
         frameWidth = boundHeight * groups[groupIndex]->media[mediaIndex]->getWidth() / groups[groupIndex]->media[mediaIndex]->getHeight();
         frameOffsetX = (boundWidth - frameWidth) * .5;
         frameHeight = boundHeight;
@@ -148,6 +154,27 @@ void MediaPlayer::calculateDimensions(){
             frameOffsetX = (boundWidth - frameWidth) * .5;
 
         }
+        frameOffsetY = 0;
+        stretchMode = "preserve";
+    }else if (stretchIndex == 2){
+        //fitting it to the screen
+        if (groups[groupIndex]->media[mediaIndex]->getWidth() > groups[groupIndex]->media[mediaIndex]->getHeight()){
+            float difference = boundWidth/ groups[groupIndex]->media[mediaIndex]->getWidth();
+            frameWidth = groups[groupIndex]->media[mediaIndex]->getWidth() * difference;
+            frameHeight = groups[groupIndex]->media[mediaIndex]->getHeight()*difference;
+            frameOffsetX = 0;
+            frameOffsetY = (boundHeight - frameHeight) * .5;
+        }
+        if ( frameHeight > boundHeight){
+            float difference = boundHeight/groups[groupIndex]->media[mediaIndex]->getHeight();
+            frameHeight =groups[groupIndex]->media[mediaIndex]->getHeight() * difference;
+            frameWidth = groups[groupIndex]->media[mediaIndex]->getWidth() * difference;
+            frameOffsetX = (boundWidth - frameWidth)*.5;
+            frameOffsetY = (boundHeight - frameHeight)*.5;
+            
+        }
+        stretchMode = "fit";
+
     }
 
 }
@@ -157,6 +184,7 @@ void MediaPlayer::update(){
         loadFromQue(queIndex);
     }else{
         if (groups.size() > 0){
+            calculateDimensions();
             if (groups[groupIndex]->media.size() >= mediaIndex+1){
                 manageLooping();
                 timedelta = ofGetLastFrameTime();
@@ -241,6 +269,7 @@ void MediaPlayer::draw(){
                     }else{
                         ofDrawBitmapStringHighlight("LoopMode: ping-pong", 10,100);
                     }
+                    ofDrawBitmapStringHighlight("StretchMode: "+ stretchMode, 10,120);
                 }
             }
         }else{
@@ -260,6 +289,15 @@ void MediaPlayer::draw(){
 
 void MediaPlayer::keyPressed(int key){
     cout << "key: "<<key<<"\n";
+    if (key == 115){
+        // s
+        stretchIndex+= 1;
+        if (stretchIndex > 2){
+            stretchIndex = 0;
+        }
+        calculateDimensions();
+    }
+    
     if (key == 117){
         // u
         if (drawUI == true){

@@ -81,21 +81,21 @@ void BeatDetector::draw() {
 //    std::string __hihat = _hihat.str();
     
     if (kickActive) {
-        ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 120);
+        ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 140);
         if (isKicking) {
-            ofDrawBitmapStringHighlight("TICK", 200, 120);
-        }
-    } else {
-        ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 120);
-    }
-    
-    if (snareActive) {
-        ofDrawBitmapStringHighlight("Snare Detection: ON",10,140);
-        if (isSnaring) {
             ofDrawBitmapStringHighlight("TICK", 200, 140);
         }
     } else {
-        ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 140);
+        ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 140);
+    }
+    
+    if (snareActive) {
+        ofDrawBitmapStringHighlight("Snare Detection: ON",10,160);
+        if (isSnaring) {
+            ofDrawBitmapStringHighlight("TICK", 200, 160);
+        }
+    } else {
+        ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 160);
     }
 }
 

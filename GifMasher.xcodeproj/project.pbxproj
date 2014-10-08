@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A5BB6F6619E4F02400A6DC0E /* BeatDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F6519E4F02400A6DC0E /* BeatDetector.cpp */; };
 		A5BB6F6D19E4F14200A6DC0E /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F6919E4F13900A6DC0E /* fft.cpp */; };
 		A5BB6F6E19E4F14600A6DC0E /* ofxBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F6B19E4F13900A6DC0E /* ofxBeat.cpp */; };
+		A5BB6F7219E4F57A00A6DC0E /*  BeatDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		C90CDA5A19D8A9F300BB3A76 /* MediaGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */; };
+		C90CDA5A19D8AFixi9F300BB3A76 /* MediaGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */; };
 		C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */; };
 		C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */; };
 		C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */; };
@@ -69,11 +69,11 @@
 /* Begin PBXFileReference section */
 		A52FA97C19D18A9100141546 /* BeatDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeatDetector.h; sourceTree = "<group>"; };
 		A5B86D3919D01C5A0048FDF8 /* GifMasherDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifMasherDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5BB6F6519E4F02400A6DC0E /* BeatDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeatDetector.cpp; sourceTree = "<group>"; };
 		A5BB6F6919E4F13900A6DC0E /* fft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
 		A5BB6F6A19E4F13900A6DC0E /* fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
 		A5BB6F6B19E4F13900A6DC0E /* ofxBeat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBeat.cpp; sourceTree = "<group>"; };
 		A5BB6F6C19E4F13900A6DC0E /* ofxBeat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBeat.h; sourceTree = "<group>"; };
+		A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = " BeatDetector.cpp"; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MediaGroup.cpp; sourceTree = "<group>"; };
 		C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaGroup.h; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A5BB6F6519E4F02400A6DC0E /* BeatDetector.cpp */,
+				A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */,
 				C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */,
 				C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */,
 				C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */,
@@ -363,8 +363,8 @@
 				C90CDA5A19D8A9F300BB3A76 /* MediaGroup.cpp in Sources */,
 				C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* Application.cpp in Sources */,
+				A5BB6F7219E4F57A00A6DC0E /*  BeatDetector.cpp in Sources */,
 				C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */,
-				A5BB6F6619E4F02400A6DC0E /* BeatDetector.cpp in Sources */,
 				C9C3B89219D12018004668B8 /* ofxGifFrame.cpp in Sources */,
 				C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */,
 			);

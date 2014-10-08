@@ -295,8 +295,8 @@ void MediaPlayer::draw(){
         }else{
             ofDrawBitmapStringHighlight("GROUP MODE: CREATE", boundWidth - 160,20);
         }
+        ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
     }
-    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
 }
 
 void MediaPlayer::keyPressed(int key){

@@ -10,8 +10,8 @@
 		A5BB6F6D19E4F14200A6DC0E /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F6919E4F13900A6DC0E /* fft.cpp */; };
 		A5BB6F6E19E4F14600A6DC0E /* ofxBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F6B19E4F13900A6DC0E /* ofxBeat.cpp */; };
 		A5BB6F7219E4F57A00A6DC0E /*  BeatDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */; };
+		A5BB6F7419E4F80400A6DC0E /* MediaGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
-		C90CDA5A19D8AFixi9F300BB3A76 /* MediaGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */; };
 		C9529A7519D115ED00439EF8 /* MediaPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */; };
 		C9C3B89019D12018004668B8 /* ofxGifDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88A19D12018004668B8 /* ofxGifDecoder.cpp */; };
 		C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C3B88C19D12018004668B8 /* ofxGifFile.cpp */; };
@@ -248,7 +248,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */,
 				C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */,
 				C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */,
 				C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */,
@@ -257,6 +256,7 @@
 				E4B69E1E0A3A1BDC003C02F2 /* Application.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* Application.h */,
 				A52FA97C19D18A9100141546 /* BeatDetector.h */,
+				A5BB6F7119E4F57A00A6DC0E /*  BeatDetector.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -357,10 +357,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5BB6F7419E4F80400A6DC0E /* MediaGroup.cpp in Sources */,
 				A5BB6F6E19E4F14600A6DC0E /* ofxBeat.cpp in Sources */,
 				A5BB6F6D19E4F14200A6DC0E /* fft.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				C90CDA5A19D8A9F300BB3A76 /* MediaGroup.cpp in Sources */,
 				C9C3B89119D12018004668B8 /* ofxGifFile.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* Application.cpp in Sources */,
 				A5BB6F7219E4F57A00A6DC0E /*  BeatDetector.cpp in Sources */,

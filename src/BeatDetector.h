@@ -32,8 +32,6 @@ private:
     bool isSnaring;
     bool isHatting;
     
-    bool showGUI;
-    
     ofxBeat detector;
     
 };

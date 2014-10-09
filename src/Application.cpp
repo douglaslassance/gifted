@@ -2,12 +2,7 @@
 
 void Application::setup() {
     
-    // Setting the frame rate.
     ofSetFrameRate(30);
-    
-    // Setting the background color.
-    ofBackground(0, 0, 0);
-    
     // Listing our input devices.
     soundStream.listDevices();
     

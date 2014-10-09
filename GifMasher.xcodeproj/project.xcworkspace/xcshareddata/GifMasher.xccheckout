@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1F652E1E-5CDB-4285-B317-D5C42A804995</string>
+	<string>84F82349-B0BC-44AC-85F7-F83517723706</string>
 	<key>IDESourceControlProjectName</key>
 	<string>GifMasher</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/douglaslassance/gifmasher.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GifMasher.xcodeproj</string>
+	<string>apps/myApps/GifMasher/GifMasher.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8DBDF526023149020C495A2F6E4B17ED1AF37F21</key>
-		<string>../..</string>
+		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/douglaslassance/gifmasher.git</string>

@@ -10,7 +10,6 @@ BeatDetector::BeatDetector() {
     isKicking = false;
     isSnaring = false;
     isHatting = false;
-    showGUI = true;
     detector.enableBeatDetect();
 }
 
@@ -81,25 +80,22 @@ void BeatDetector::draw() {
 //    _hihat << detector.hihat();
 //    std::string __hihat = _hihat.str();
     
-    if (showGUI) {
-        
-        if (kickActive) {
-            ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 140);
-            if (isKicking) {
-                ofDrawBitmapStringHighlight("TICK", 200, 140);
-            }
-        } else {
-            ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 140);
+    if (kickActive) {
+        ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 140);
+        if (isKicking) {
+            ofDrawBitmapStringHighlight("TICK", 200, 140);
         }
-        
-        if (snareActive) {
-            ofDrawBitmapStringHighlight("Snare Detection: ON",10,160);
-            if (isSnaring) {
-                ofDrawBitmapStringHighlight("TICK", 200, 160);
-            }
-        } else {
-            ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 160);
+    } else {
+        ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 140);
+    }
+    
+    if (snareActive) {
+        ofDrawBitmapStringHighlight("Snare Detection: ON",10,160);
+        if (isSnaring) {
+            ofDrawBitmapStringHighlight("TICK", 200, 160);
         }
+    } else {
+        ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 160);
     }
 }
 
@@ -108,17 +104,13 @@ void BeatDetector::audioIn(float * input, int bufferSize, int nChannels) {
 }
 
 void BeatDetector::keyPressed(int key){
-
+    cout << "key: "<<key<<"\n";
     if (key == 107) {
         kickActive = !kickActive;
-    
-    } else if (key == 115) {
-        snareActive = !snareActive;
-    
-    } else if (key == 117) {
-        showGUI = !showGUI;
     }
-
+    if (key == 115) {
+        snareActive = !snareActive;
+    }
  }
 
 void BeatDetector::keyReleased(int key){

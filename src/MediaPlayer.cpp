@@ -312,14 +312,17 @@ void MediaPlayer::draw(){
         }else{
             ofDrawBitmapStringHighlight("GROUP MODE: CREATE", boundWidth - 160,20);
         }
+<<<<<<< HEAD
         if (burstMode == true){
             ofDrawBitmapStringHighlight("BURST MODE: TRUE", boundWidth - 160,40);
         }else{
             ofDrawBitmapStringHighlight("BURST MODE: FALSE", boundWidth - 160,40);
         }
 
+=======
+        ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
+>>>>>>> FETCH_HEAD
     }
-    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
 }
 
 void MediaPlayer::keyPressed(int key){

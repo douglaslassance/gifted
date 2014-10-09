@@ -20,6 +20,7 @@ MediaPlayer::MediaPlayer()
     stretchIndex = 0;
     drawUI = true;
     groups.reserve(100);
+    burstMode = false;
 };
 
 
@@ -143,6 +144,21 @@ void MediaPlayer::switchMedia(int amt){
         groups[groupIndex]->media[mediaIndex]->update();
     }
 
+}
+void MediaPlayer::burstMedia(int amt){
+    if (amt <0){
+        groups[groupIndex]->media[mediaIndex]->previousFrame();
+    }else{
+        groups[groupIndex]->media[mediaIndex]->nextFrame();
+    }
+}
+
+void MediaPlayer::burstToggle(){
+    if (burstMode == true){
+        groups[groupIndex]->media[mediaIndex]->stop();
+    }else{
+        groups[groupIndex]->media[mediaIndex]->play();
+    }
 }
 void MediaPlayer::calculateDimensions(){
 
@@ -295,6 +311,12 @@ void MediaPlayer::draw(){
         }else{
             ofDrawBitmapStringHighlight("GROUP MODE: CREATE", boundWidth - 160,20);
         }
+        if (burstMode == true){
+            ofDrawBitmapStringHighlight("BURST MODE: TRUE", boundWidth - 160,40);
+        }else{
+            ofDrawBitmapStringHighlight("BURST MODE: FALSE", boundWidth - 160,40);
+        }
+
     }
     ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
 }
@@ -308,6 +330,16 @@ void MediaPlayer::keyPressed(int key){
             stretchIndex = 0;
         }
         calculateDimensions();
+    }
+    
+    if (key == 98){
+        // b
+        if (burstMode == true){
+            burstMode = false;
+        }else{
+            burstMode = true;
+        }
+        burstToggle();
     }
     
     if (key == 117){
@@ -356,12 +388,21 @@ void MediaPlayer::keyPressed(int key){
     }
     if (key == 358){
         // right
-        switchMedia(1);
+        if (burstMode == false){
+            switchMedia(1);
+        }else{
+            burstMedia(1);
+        }
     }
     if (key == 356){
         // left
-        switchMedia(-1);
+        if (burstMode == false){
+            switchMedia(-1);
+        }else{
+            burstMedia(-1);
+        }
     }
+        
     }
 }
 void MediaPlayer::keyReleased(int key){

@@ -61,6 +61,8 @@ public:
     Boolean addingToGroup;
     Boolean drawUI;
     Boolean burstMode;
+    Boolean shuffleFrames;
+    Boolean shuffleMedias;
     int queIndex;
     int groupIndex;
     string queFileName;

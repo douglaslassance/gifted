@@ -21,6 +21,8 @@ MediaPlayer::MediaPlayer()
     drawUI = true;
     groups.reserve(100);
     burstMode = false;
+    shuffleFrames = true;
+    shuffleMedias = true;
 };
 
 
@@ -93,7 +95,9 @@ void MediaPlayer::manageLooping(){
         if (loopingIndex == 1){
             // here it will stop on last frme
             groups[groupIndex]->media[mediaIndex]->setLoopState(OF_LOOP_NONE);
-            groups[groupIndex]->media[mediaIndex]->play();
+            if (burstMode == false){
+                groups[groupIndex]->media[mediaIndex]->play();
+            }
             
         }
         if (loopingIndex == 2){
@@ -110,11 +114,15 @@ void MediaPlayer::manageLooping(){
 
 }
 void MediaPlayer::shuffleMedia(){
-    std::random_shuffle(groups[groupIndex]->media.begin(), groups[groupIndex]->media.end());
+    if (shuffleMedia == true){
+        std::random_shuffle(groups[groupIndex]->media.begin(), groups[groupIndex]->media.end());
+    }
 }
 
 void MediaPlayer::shuffleFrame(){
-    groups[groupIndex]->media[mediaIndex]->setPosition(ofRandom(0,1));
+    if (shuffleFrames == true){
+        groups[groupIndex]->media[mediaIndex]->setPosition(ofRandom(0,1));
+    }
 }
 void MediaPlayer::resetMedia(){
     groups[groupIndex]->media[mediaIndex]->stop();
@@ -139,9 +147,12 @@ void MediaPlayer::switchMedia(int amt){
             mediaIndex =groups[groupIndex]->media.size()-1;
             shuffleMedia();
         }
-        shuffleFrame();
-        groups[groupIndex]->media[mediaIndex]->play();
-        groups[groupIndex]->media[mediaIndex]->update();
+        if (burstMode == false){
+
+            shuffleFrame();
+            groups[groupIndex]->media[mediaIndex]->play();
+            groups[groupIndex]->media[mediaIndex]->update();
+        }
     }
 
 }
@@ -400,6 +411,13 @@ void MediaPlayer::keyPressed(int key){
             switchMedia(-1);
         }else{
             burstMedia(-1);
+            // this is if you go back to the previous gif while in burst mode
+            if (groups[groupIndex]->media[mediaIndex]->getPosition() == 0){
+                switchMedia(-1);
+                groups[groupIndex]->media[mediaIndex]->update();
+                groups[groupIndex]->media[mediaIndex]->setPosition(.95);
+                
+            }
         }
     }
         

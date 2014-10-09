@@ -25,8 +25,6 @@ public:
     void calculateDimensions();
     void updateBounds();
     void switchMedia(int amt);
-    void burstMedia(int amt);
-    void burstToggle();
     void resetQue();
     void flushQue();
     void quefinished();
@@ -60,7 +58,6 @@ public:
     Boolean queing;
     Boolean addingToGroup;
     Boolean drawUI;
-    Boolean burstMode;
     int queIndex;
     int groupIndex;
     string queFileName;

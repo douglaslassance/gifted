@@ -114,7 +114,7 @@ void MediaPlayer::manageLooping(){
 
 }
 void MediaPlayer::shuffleMedia(){
-    if (shuffleMedia == true){
+    if (shuffleMedias == true){
         std::random_shuffle(groups[groupIndex]->media.begin(), groups[groupIndex]->media.end());
     }
 }

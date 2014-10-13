@@ -327,9 +327,9 @@ void MediaPlayer::draw(){
         }else{
             ofDrawBitmapStringHighlight("BURST MODE: FALSE", boundWidth - 160,40);
         }
-
+        ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
     }
-    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
+    
 }
 
 void MediaPlayer::keyPressed(int key){

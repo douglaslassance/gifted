@@ -3,7 +3,7 @@
 void Application::setup() {
     
     // Setting the frame rate.
-    ofSetFrameRate(30);
+    ofSetFrameRate(60);
     
     // Setting the background color.
     ofBackground(0, 0, 0);

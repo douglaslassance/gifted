@@ -36,7 +36,7 @@ void Application::update() {
 void Application::draw() {
     mediaPlayer->draw();
     beatDetector->draw();
-    ofDrawBitmapStringHighlight("Audio Input: " + ofToString(audioDeviceID), 50, 120);
+    ofDrawBitmapStringHighlight("Audio Input (0-9): " + ofToString(audioDeviceID), 10, 140);
 }
 
 void Application::setAudioInput(int index) {

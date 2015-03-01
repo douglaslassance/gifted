@@ -84,21 +84,21 @@ void BeatDetector::draw() {
     if (showGUI) {
         
         if (kickActive) {
-            ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 160);
+            ofDrawBitmapStringHighlight("Kick Detection (K): ON", 10, 160);
             if (isKicking) {
-                ofDrawBitmapStringHighlight("TICK", 200, 160);
+                ofDrawBitmapStringHighlight("TICK", 210, 160);
             }
         } else {
-            ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 160);
+            ofDrawBitmapStringHighlight("Kick Detection (K): OFF", 10, 160);
         }
         
         if (snareActive) {
-            ofDrawBitmapStringHighlight("Snare Detection: ON",10,180);
+            ofDrawBitmapStringHighlight("Snare Detection (N): ON",10,180);
             if (isSnaring) {
-                ofDrawBitmapStringHighlight("TICK", 200, 180);
+                ofDrawBitmapStringHighlight("TICK", 210, 180);
             }
         } else {
-            ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 180);
+            ofDrawBitmapStringHighlight("Snare Detection (N): OFF", 10, 180);
         }
     }
 }
@@ -112,7 +112,7 @@ void BeatDetector::keyPressed(int key){
     if (key == 107) {
         kickActive = !kickActive;
     
-    } else if (key == 115) {
+    } else if (key == 110) {
         snareActive = !snareActive;
     
     } else if (key == 117) {

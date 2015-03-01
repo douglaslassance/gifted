@@ -16,9 +16,9 @@ class Application : public ofBaseApp {
         void keyReleased(int key);
         void mousePressed(int x, int y, int button);
         void mouseReleased(int x, int y, int button);
-
+        void setAudioInput(int index);
         ofSoundStream soundStream;
-    
+        int audioDeviceID;
         BeatDetector *beatDetector;
         MediaPlayer *mediaPlayer;
 };

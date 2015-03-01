@@ -84,21 +84,21 @@ void BeatDetector::draw() {
     if (showGUI) {
         
         if (kickActive) {
-            ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 140);
+            ofDrawBitmapStringHighlight("Kick Detection: ON", 10, 160);
             if (isKicking) {
-                ofDrawBitmapStringHighlight("TICK", 200, 140);
-            }
-        } else {
-            ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 140);
-        }
-        
-        if (snareActive) {
-            ofDrawBitmapStringHighlight("Snare Detection: ON",10,160);
-            if (isSnaring) {
                 ofDrawBitmapStringHighlight("TICK", 200, 160);
             }
         } else {
-            ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 160);
+            ofDrawBitmapStringHighlight("Kick Detection: OFF", 10, 160);
+        }
+        
+        if (snareActive) {
+            ofDrawBitmapStringHighlight("Snare Detection: ON",10,180);
+            if (isSnaring) {
+                ofDrawBitmapStringHighlight("TICK", 200, 180);
+            }
+        } else {
+            ofDrawBitmapStringHighlight("Snare Detection: OFF", 10, 180);
         }
     }
 }

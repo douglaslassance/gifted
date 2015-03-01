@@ -248,14 +248,14 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A5A1834019EA354E00781C79 /* BeatDetector.cpp */,
-				C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */,
 				C90CDA5819D8A9F300BB3A76 /* MediaGroup.cpp */,
+				C90CDA5919D8A9F300BB3A76 /* MediaGroup.h */,
 				C9529A7319D115ED00439EF8 /* MediaPlayer.cpp */,
 				C9529A7419D115ED00439EF8 /* MediaPlayer.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* Application.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* Application.h */,
+				A5A1834019EA354E00781C79 /* BeatDetector.cpp */,
 				A52FA97C19D18A9100141546 /* BeatDetector.h */,
 			);
 			path = src;

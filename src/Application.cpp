@@ -12,11 +12,9 @@ void Application::setup() {
     soundStream.listDevices();
     
     // Setting the input device.
-    soundStream.setDeviceID(3);
+    setAudioInput(0);
     
-    // Starting the stream.
-    soundStream.setup(this, 0, 2, 44100, 1024, 4);
-    
+    // Initializing main objects.
     mediaPlayer = new MediaPlayer();
     beatDetector = new BeatDetector();
 }
@@ -31,13 +29,22 @@ void Application::update() {
     mediaPlayer->update();
     
     if (beatDetector->isKick() or beatDetector->isSnare()) {
-        mediaPlayer->switchMedia(1);
+        mediaPlayer->switchMedia(10);
     }
 }
 
-void Application::draw(){
+void Application::draw() {
     mediaPlayer->draw();
     beatDetector->draw();
+    ofDrawBitmapStringHighlight("Audio Input: " + ofToString(audioDeviceID), 50, 120);
+}
+
+void Application::setAudioInput(int index) {
+    cout << "Setting audio input to " << index << ".\n";
+    audioDeviceID = index;
+    soundStream.close();
+    soundStream.setDeviceID(index);
+    soundStream.setup(this, 0, 2, 44100, 1024, 4);
 }
 
 void Application::audioIn(float* input, int bufferSize, int nChannels) {
@@ -47,6 +54,13 @@ void Application::dragEvent(ofDragInfo dragInfo){
     mediaPlayer->dropped(dragInfo);
 }
 void Application::keyPressed(int key){
+    
+    for (int code = 48; code <= 57; code++) {
+        if (key==code) {
+            setAudioInput(key-48);
+        }
+    }
+    
     mediaPlayer->keyPressed(key);
     beatDetector->keyPressed(key);
 }

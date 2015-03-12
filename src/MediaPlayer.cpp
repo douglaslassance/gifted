@@ -11,7 +11,6 @@ MediaPlayer::MediaPlayer()
 {
     std::cout << "Starting Instance of Media Player";
     mediaIndex = 0;
-    // if false, will attempt to preserve aspect ratio a bit
     frameOffsetX = 0.0;
     frameOffsetY = 0.0;
     addingToGroup = false;
@@ -114,6 +113,7 @@ void MediaPlayer::manageLooping(){
 
 }
 void MediaPlayer::shuffleMedia(){
+    // randomly shuffles around the gifs in memory
     if (shuffleMedias == true){
         std::random_shuffle(groups[groupIndex]->media.begin(), groups[groupIndex]->media.end());
     }
@@ -148,7 +148,6 @@ void MediaPlayer::switchMedia(int amt){
             shuffleMedia();
         }
         if (burstMode == false){
-
             shuffleFrame();
             groups[groupIndex]->media[mediaIndex]->play();
             groups[groupIndex]->media[mediaIndex]->update();
@@ -165,6 +164,14 @@ void MediaPlayer::burstMedia(int amt){
 }
 
 void MediaPlayer::burstToggle(){
+    
+    if (burstMode == true){
+        burstMode = false;
+    }else{
+        burstMode = true;
+    }
+    // stop playing media because burst mode hanldes playing frames via different inputs
+    
     if (burstMode == true){
         groups[groupIndex]->media[mediaIndex]->stop();
     }else{
@@ -250,9 +257,11 @@ void MediaPlayer::makeGroup(string name){
 }
 
 void MediaPlayer::dropped(ofDragInfo dragInfo){
-    queing = true;
     flushQue();
     if (addingToGroup == true){
+        if (groups.size() == 0){
+            makeGroup("GROUP "+ofToString(groups.size()));
+        }
     }else{
         makeGroup("GROUP "+ofToString(groups.size()));
     }
@@ -261,11 +270,11 @@ void MediaPlayer::dropped(ofDragInfo dragInfo){
     que.reserve(dragInfo.files.size());
     
     for (int i = 0; i < dragInfo.files.size();i++){
-        if (ofIsStringInString(dragInfo.files[i], ".gif") == false){
-            loadGifs(dragInfo.files[i],groups[groupIndex]);
-        }else{
+        //if (ofIsStringInString(dragInfo.files[i], ".gif") == false){
+        //    loadGifs(dragInfo.files[i],groups[groupIndex]);
+        //}else{
             loadSingleGif(dragInfo.files[i],groups[groupIndex]);
-        }
+        //}
     }
     
 }
@@ -288,12 +297,18 @@ void MediaPlayer::changeMediaBackwards(){
 }
 void MediaPlayer::draw(){
     if (que.size() > 0){
+        // WHILE LOADING
+        // UI DURING LOADING OF GIFS
         ofDrawBitmapStringHighlight("loading gif: " +ofToString(queFileName) + "   "+ofToString(queIndex+1) + " / "+ofToString(que.size()), 20,20);
     }else{
+        // WHILE NOT LOADING
         if (groups.size() > 0){
             
             if (groups[groupIndex]->media.size() >= mediaIndex+1){
+                // FRAME DRAWING CODE
                 groups[groupIndex]->media[mediaIndex]->draw(frameOffsetX,frameOffsetY,frameWidth,frameHeight);
+                
+                // UI DRAWING CODE WHILE GIFS PLAYING
                 if (drawUI == true){
                     ofDrawBitmapStringHighlight("File Name: "+ ofToString(groups[groupIndex]->media[mediaIndex]->getMoviePath()), 10,20);
                     ofDrawBitmapStringHighlight("Playback Position: "+ ofToString(groups[groupIndex]->media[mediaIndex]->getPosition())+" / 1.0", 10,40);
@@ -312,10 +327,12 @@ void MediaPlayer::draw(){
                 }
             }
         }else{
+            // DRAW WHEN THERE ARE NO GIFS
             ofDrawBitmapStringHighlight("NO GIFS LOADED", boundWidth/2-100,boundHeight/2);
             ofDrawBitmapStringHighlight("drag and drop files, or a folder", boundWidth/2-170,boundHeight/2+40);
         }
     }
+    // DRAW UI CODE PERMANENT
     if (drawUI == true){
         if (addingToGroup == true){
             ofDrawBitmapStringHighlight("GROUP MODE: ADD", boundWidth - 160,20);
@@ -330,12 +347,20 @@ void MediaPlayer::draw(){
         ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
     }
     
+    // FRAME RATE
+    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate(),2), boundWidth - 160,60);
 }
 
 void MediaPlayer::keyPressed(int key){
     cout << "key: "<<key<<"\n";
     if (key == 115){
         // s
+        // stretch index toggles between stretch modes that affect the aspect ratio of the image
+        
+        // 0: "stretch"  traditional stretching, the images is stretch to fill the entire screen
+        // 1: "preserve" the image is fit to the screen to preserve its aspect ratio, but leave the entire screen filled
+        // 2:  "fit" the image is fitted to the screen to present the image in its entirety, leaving black gaps and not filling the entire canvas
+
         stretchIndex+= 1;
         if (stretchIndex > 2){
             stretchIndex = 0;
@@ -345,16 +370,14 @@ void MediaPlayer::keyPressed(int key){
     
     if (key == 98){
         // b
-        if (burstMode == true){
-            burstMode = false;
-        }else{
-            burstMode = true;
-        }
+        // triggers burst mode
+        // enter description for what burst mode does
         burstToggle();
     }
     
     if (key == 117){
         // u
+        // toggles UI drawing or not
         if (drawUI == true){
             drawUI = false;
         }else{
@@ -363,6 +386,9 @@ void MediaPlayer::keyPressed(int key){
     }
     if (key == 2304){
         // shift
+        // you can create different containers of gifs called "groups" this could be a collection of happy gifs, sad gifs, animae gifs.. whatever
+        // you can then use the up and down keys to toggle between these groups for a better performance
+        
         if (addingToGroup == false){
             addingToGroup = true;
         }else{
@@ -372,6 +398,7 @@ void MediaPlayer::keyPressed(int key){
     if (queing == false){
     if (key == 357){
         //up
+        // TOGGLES A NEW GROUP
         resetMedia();
         if (groupIndex+1 >= groups.size()){
             groupIndex = 0;
@@ -384,6 +411,7 @@ void MediaPlayer::keyPressed(int key){
     }
     if (key == 359){
         // down
+        // TOGGLES A NEW GROUP
         resetMedia();
         if (groupIndex-1 < 0){
             groupIndex = groups.size()-1;
@@ -396,13 +424,26 @@ void MediaPlayer::keyPressed(int key){
     if (key == 108){
         // l
         loopingIndex+=1;
+        // 1:  it will stop on last frme
+        // 2:  start back on first frame
+        // 3:  get to last frame, then ping pong back and forth
+
+
     }
     if (key == 358){
         // right
+        // if you are not in burst mode, this will just switch you to the next gif, if you are in burst mode
+        // then this will go to the next frame of the gif instead of skipping to the next gif.
         if (burstMode == false){
             switchMedia(1);
         }else{
             burstMedia(1);
+            if (groups[groupIndex]->media[mediaIndex]->getPosition() >= .99){
+                switchMedia(1);
+                groups[groupIndex]->media[mediaIndex]->update();
+                groups[groupIndex]->media[mediaIndex]->setPosition(0);
+                
+            }
         }
     }
     if (key == 356){
@@ -411,7 +452,7 @@ void MediaPlayer::keyPressed(int key){
             switchMedia(-1);
         }else{
             burstMedia(-1);
-            // this is if you go back to the previous gif while in burst mode
+            // this is when you get the beginning of the gif
             if (groups[groupIndex]->media[mediaIndex]->getPosition() == 0){
                 switchMedia(-1);
                 groups[groupIndex]->media[mediaIndex]->update();

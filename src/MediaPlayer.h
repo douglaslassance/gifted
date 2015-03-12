@@ -8,7 +8,6 @@
 
 #include "Application.h"
 #include "MediaGroup.h"
-#include <thread>
 # define OF_KEY_SHIFT 0x0400
 
 #ifndef _MediaPlayer
